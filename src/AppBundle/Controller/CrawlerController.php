@@ -33,26 +33,20 @@ class CrawlerController extends Controller
      */
     public function indexAction($page, $_format)
     {
-        $jobs = $this->getJobsFromSpoty();
-        //$this->crawl($site);
-        return $this->render('base.'.$_format.'.twig', ['jobs' => $jobs]);
-        // $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
-        //
-        // // Every template name also has two extensions that specify the format and
-        // // engine for that template.
-        // // See https://symfony.com/doc/current/templating.html#template-suffix
-        // return $this->render('blog/index.'.$_format.'.twig', ['posts' => $posts]);
-    }
+        $jobs = $this->getJobsFromSpoty('https://www.spotify.com/es/jobs/opportunities/all/all/singapore-singapore');
 
-    private function getJobsFromSpoty() {
-        $html = file_get_contents('https://www.spotify.com/es/jobs/opportunities/all/all/singapore-singapore');
+        return $this->render('jobs/jobs.'.$_format.'.twig', ['jobs' => $jobs]);
+    }
+    /**
+     * pulling jobs from a specific URL
+     */
+    private function getJobsFromSpoty(string $url) {
+        $html = file_get_contents($url);
 
         $crawler = new Crawler($html);
 
-        // apply css selector filter
+        // apply css selector filter, taking out the title and the link
         $job_data = $crawler->filter('h3.job-title a')->extract(array('_text', 'href'));
-
-        var_dump($job_data);
 
         return $job_data;
     }

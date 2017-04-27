@@ -1,0 +1,24 @@
+<div class="container">
+  <table class="table ">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Column3</th>
+      <th>Column4</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for job in jobs %}
+    <tr>
+      <td>{{ job[0] }}</td>
+      <td>{{ job[1] }}</td>
+      <td>Static text</td>
+      <td>Static text</td>
+      <td>Gear</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+</div>
