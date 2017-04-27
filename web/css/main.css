@@ -69,6 +69,11 @@ header .locales a {
     margin-top: 0
 }
 
+.locales img {
+         height: 18px;
+         padding-right: 10px;
+}
+
 #sidebar .section {
     margin-bottom: 2em
 }

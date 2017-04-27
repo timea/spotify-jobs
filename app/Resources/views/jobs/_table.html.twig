@@ -1,22 +1,28 @@
-<div class="container">
-  <table class="table ">
-  <thead>
+{% block stylesheets %}
+    {% stylesheets 'bundles/app/scss/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+<div class="table-responsive wrapper ">
+  <table class="table">
+  <thead class="thead-new">
     <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Column3</th>
-      <th>Column4</th>
-      <th></th>
+      <th class="th-new">Title</th>
+      <th class="th-new">Url</th>
+      <th class="th-new">Column3</th>
+      <th class="th-new">Column4</th>
+      <th class="th-new"></th>
     </tr>
   </thead>
   <tbody>
     {% for job in jobs %}
-    <tr>
-      <td>{{ job[0] }}</td>
-      <td>{{ job[1] }}</td>
-      <td>Static text</td>
-      <td>Static text</td>
-      <td>Gear</td>
+    <tr class="tr-new">
+      <td class="job-title">{{ job[0] }}</td>
+      <td><a href="https://graduateland.com/jobs"{{ job[1] }}>https://graduateland.com/jobs{{ job[1] }}</a></td>
+      <td class="static-text">Static text</td>
+      <td class="static-text">Static text</td>
+      <td><i class="fa fa-cog cog-new" aria-hidden="true"></i></td>
     </tr>
     {% endfor %}
   </tbody>

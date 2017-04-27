@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My cool blog posts{% endblock %}
+{% block title %}Jobs{% endblock %}
 
 {% block body %}
-    {{ include('jobs/_table.html.twig') }}
+  <div class="row">
+    <div class="column col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9 ">
+      <h3> Jobs </h3>
+      {{ include('jobs/_table.html.twig') }}
+    </div>
+  </div>
 {% endblock %}
