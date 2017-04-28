@@ -31,11 +31,11 @@ class CrawlerController extends Controller
      * Content-Type header for the response.
      * See http://symfony.com/doc/current/quick_tour/the_controller.html#using-formats
      */
-    public function indexAction($page, $_format)
+    public function indexAction($page, $_format, Request $request)
     {
         $jobs = $this->getJobsFromSpoty('https://www.spotify.com/es/jobs/opportunities/all/all/singapore-singapore');
-
-        return $this->render('jobs/jobs.'.$_format.'.twig', ['jobs' => $jobs]);
+        $locale = $request->getLocale();
+        return $this->render('jobs/jobs.'.$_format.'.twig', ['jobs' => $jobs, 'locale'=>$locale]);
     }
     /**
      * pulling jobs from a specific URL

@@ -12,7 +12,6 @@
         <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/bootstrap-flatly-3.3.7.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('bundles/app/scss/*') }}">
             <link rel="stylesheet" href="{{ asset('css/font-awesome-4.6.3.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/font-lato.css') }}">
             <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
@@ -25,70 +24,69 @@
 
     <body id="{% block body_id %}{% endblock %}" class="my-body">
 
-        {% block header %}
-            <header>
-                <div class="navbar navbar-default navbar-static-top" role="navigation">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="{{ path('homepage') }}">
-                                Symfony Demo
-                            </a>
+    {% block header %}
+        <header>
+            <div class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{ path('homepage') }}">
+                            Symfony Demo
+                        </a>
 
-                            <button type="button" class="navbar-toggle"
-                                    data-toggle="collapse"
-                                    data-target=".navbar-collapse">
-                                <span class="sr-only">{{ 'menu.toggle_nav'|trans }}</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
+                        <button type="button" class="navbar-toggle"
+                                data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="sr-only">{{ 'menu.toggle_nav'|trans }}</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
 
-                                {% block header_navigation_links %}
+                            {% block header_navigation_links %}
+                                <li>
+                                    <a href="{{ path('blog_index') }}">
+                                        <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
+                                    </a>
+                                </li>
+
+                                {% if is_granted('ROLE_ADMIN') %}
                                     <li>
-                                        <a href="{{ path('blog_index') }}">
-                                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
-                                        </a>
-                                    </li>
-
-                                    {% if is_granted('ROLE_ADMIN') %}
-                                        <li>
-                                            <a href="{{ path('admin_post_index') }}">
-                                                <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endblock %}
-
-                                {% if app.user %}
-                                    <li>
-                                        <a href="{{ path('security_logout') }}">
-                                            <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                                        <a href="{{ path('admin_post_index') }}">
+                                            <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
                                         </a>
                                     </li>
                                 {% endif %}
+                            {% endblock %}
 
-                                {# Generate a dropdown with all our locales #}
-                                     <li class="dropdown">
-                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-flag"></i> <span class="caret"></span></a>
-                                         <ul class="dropdown-menu locales" role="menu">
-                                             <li><a href="{{ path('blog_index', {_locale:'de'}) }}"><img src="{{ asset('images/flags/de.png') }}" alt="Deutsch"> Deutsch</a></li>
-                                             <li><a href="{{ path('blog_index', {_locale:'en'}) }}"><img src="{{ asset('images/flags/en.png') }}" alt="English"> English</a></li>
-                                             <li><a href="{{ path('blog_index', {_locale:'es'}) }}"><img src="{{ asset('images/flags/es.png') }}" alt="Español"> Español</a></li>
-                                             <li><a href="{{ path('blog_index', {_locale:'fr'}) }}"><img src="{{ asset('images/flags/fr.png') }}" alt="Français"> Français</a></li>
-                                             <li><a href="{{ path('blog_index', {_locale:'ru'}) }}"><img src="{{ asset('images/flags/ru.png') }}" alt="русский"> русский</a></li>
-                                             <li><a href="{{ path('blog_index', {_locale:'cs'}) }}"><img src="{{ asset('images/flags/cs.png') }}" alt="česká republika"> česká republika</a></li>
-                                         </ul>
-                                     </li>
+                            {% if app.user %}
+                                <li>
+                                    <a href="{{ path('security_logout') }}">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
 
-                            </ul>
-                        </div>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="locales">
+                                    <i class="fa fa-globe" aria-hidden="true"></i>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>
+                                </a>
+                                <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">
+                                    {% for locale in locales() %}
+                                        <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"{% else %}aria-checked="false"{% endif %} role="menuitem"><a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </header>
-        {% endblock %}
+            </div>
+        </header>
+    {% endblock %}
 
         <div class="body-container">
             {% block body %}
@@ -146,6 +144,7 @@
             <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap-tagsinput.min.js') }}"></script>
             <script src="{{ asset('js/main.js') }}"></script>
+            <script src="{{ asset('js/extra.js') }}"></script>
         {% endblock %}
 
         {# it's not mandatory to set the timezone in localizeddate(). This is done to

@@ -1,0 +1,54 @@
+.table .thead-new {
+    color: grey;
+    font-family: 'Lato-thin';
+    font-style: italic;
+    font-weight: 100 !important;
+    border-bottom: 4px solid #EDEDED;
+}
+
+.tr-new {
+  border-bottom: 2px solid #EDEDED;
+}
+
+.table .th-new {
+  padding: 20px 10px 20px 10px;
+}
+
+td {
+    padding: 20px 10px 20px !important;
+}
+
+.job-title {
+  color: #747474;
+}
+
+.wrapper {
+  overflow-x:auto;
+}
+
+.static-text {
+  color: #B2B2B2
+}
+
+.table {
+  background-color: white;
+}
+
+.cog-new {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #666;
+  color: transparent;
+}
+
+.my-body {
+  background-color: #EDEDED;
+}
+
+a {
+  color :	#64AEEB;
+}
+
+
+.flag {
+  max-width: 15px !important;
+}
