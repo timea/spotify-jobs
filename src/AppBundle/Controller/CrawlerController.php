@@ -47,8 +47,15 @@ class CrawlerController extends Controller
 
         // apply css selector filter, taking out the title and the link
         $job_data = $crawler->filter('h3.job-title a')->extract(array('_text', 'href'));
+        $job_data2 = $crawler->filter('.job-listing p')->extract(array('_text'));
 
-        return $job_data;
+        $merged = array();
+        for ($i=0; $i < count($job_data); $i++) {
+          $tmp = array("title"=>$job_data[$i][0], "link"=>$job_data[$i][1], "description"=>$job_data2[$i]);
+          array_push($merged, $tmp);
+        }
+        
+        return $merged;
     }
 
 }

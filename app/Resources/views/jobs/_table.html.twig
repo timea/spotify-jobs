@@ -10,7 +10,7 @@
     <tr>
       <th class="th-new">Title</th>
       <th class="th-new">Url</th>
-      <th class="th-new">Column3</th>
+      <th class="th-new">Description</th>
       <th class="th-new">Column4</th>
       <th class="th-new"></th>
     </tr>
@@ -18,9 +18,9 @@
   <tbody>
     {% for job in jobs %}
     <tr class="tr-new">
-      <td class="job-title">{{ job[0] }}</td>
-      <td><a href="https://graduateland.com/jobs"{{ job[1] }}>https://graduateland.com/jobs{{ job[1] }}</a></td>
-      <td class="static-text">Static text</td>
+      <td class="job-title">{{ job.title }}</td>
+      <td><a href="https://graduateland.com/jobs"{{ job.link }}>https://graduateland.com{{ job.link }}</a></td>
+      <td class="static-text"> {{ job.description }}</td>
       <td class="static-text">Static text</td>
       <td><i class="fa fa-cog cog-new" aria-hidden="true"></i></td>
     </tr>
