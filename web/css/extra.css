@@ -34,7 +34,7 @@ td {
   background-color: white;
 }
 
-.cog-new {
+.cog-new, .sidebar-icon{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #666;
   color: transparent;
@@ -108,7 +108,7 @@ a {
 }
 .navbar-brand {
     position: absolute;
-    left: 25%;
+    left: 12%;
     padding-top: 25px;
     display: inline-flex;
 }
@@ -121,4 +121,67 @@ a {
   padding-left: 5px;
   padding-top: 3px;
   color: #c4c2c2;
+}
+
+.sidenav {
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    z-index: 40;
+    top: 0;
+    left: 0;
+    background: #2C333B;
+    overflow-x: hidden;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    min-height: 70px;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+    background-color: #59D57F;
+}
+
+.sidebar-text {
+  font-size: 0.6em;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar-icon{
+  font-size: 1.5em;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+#top {
+  margin-left: 70px;
+}
+
+.body-container {
+  padding-right: 25px;
+}
+
+.home {
+  background-color: #38424A;
+}
+
+.job-badge {
+  position: absolute;
+  left: 38px;
+  top: 75px;
+  background: red;
+  font-size: 0.5em;
+}
+
+footer {
+  padding-left: 70px;
 }
