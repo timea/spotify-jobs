@@ -1,30 +1,37 @@
 {% block stylesheets %}
-    {% stylesheets 'css/extra.css' filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% stylesheets 'css/extra.css' filter = 'cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 
 <div class="table-responsive">
-  <table class="table">
-  <thead class="thead-new">
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th>Column4</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for job in jobs %}
-    <tr class="tr-new">
-      <td class="job-title">{{ job.title }}</td>
-      <td><a href="https://graduateland.com/jobs"{{ job.link }}>https://graduateland.com{{ job.link }}</a></td>
-      <td class="static-text"> {{ job.description }}</td>
-      <td class="static-text">Static text</td>
-      <td><a href="#"><i class="fa fa-cog cog-new" aria-hidden="true"></i></a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-  </table>
+    <table class="table">
+        <thead class="thead-new">
+            <tr>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Description</th>
+                <th>Column4</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+                <tr class="tr-new">
+                    <td class="job-title">{{ job.title }}</td>
+                    <td>
+                        <a href="https://graduateland.com/jobs" {{ job.link }}>https://graduateland.com{{ job.link }}</a>
+                    </td>
+                    <td class="static-text">
+                        {{ job.description }}</td>
+                    <td class="static-text">Static text</td>
+                    <td>
+                        <a href="#">
+                            <i class="fa fa-cog cog-new" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>

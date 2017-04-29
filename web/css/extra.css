@@ -60,7 +60,7 @@ footer {
     padding-left: 10px;
 }
 
-.message {
+#message {
   color: #EDEDED;
 }
 
@@ -74,7 +74,7 @@ footer {
     display: inline-flex;
 }
 
-.post_a_job, .post_a_job:visited {
+.post-a-job, .post-a-job:visited {
   text-align: center;
   width: 120px;
   font-size: 0.8em;
@@ -85,7 +85,7 @@ footer {
   text-decoration: none;
 }
 
-.post_a_job:hover {
+.post-a-job:hover {
   background-color: #64AEEB !important;
   color: white !important;
 }
@@ -104,7 +104,7 @@ footer {
   margin-left: 70px;
 }
 
-.user_menu {
+.user-menu {
   font-size: 0.7em;
 }
 

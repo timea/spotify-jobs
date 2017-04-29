@@ -1,83 +1,79 @@
-Symfony Demo Application
-========================
+# Spotify Jobs
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop Symfony applications following the recommended best practices.
+The base of this project is the [symfony-demo](https://github.com/symfony/symfony-demo) app providing the context to the required view.
 
-[![Build Status](https://travis-ci.org/symfony/symfony-demo.svg?branch=master)](https://travis-ci.org/symfony/symfony-demo)
+## Install
 
-Requirements
-------------
+- git clone
+- cd spotify-jobs
+- php bin/console server:run (the server is running on port 8000)
+- you should see this on localhost:8000
 
-  * PHP 5.5.9 or higher;
-  * PDO-SQLite PHP extension enabled;
-  * and the [usual Symfony application requirements](http://symfony.com/doc/current/reference/requirements.html).
+![first_screen](/web/images/1.png)
 
-If unsure about meeting these requirements, download the demo application and
-browse the `http://localhost:8000/config.php` script to get more detailed
-information.
+- click browse backend
 
-Installation
-------------
+![second_screen](/web/images/2.png)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+- click sign in on the left
 
-First, install the [Symfony Installer](https://github.com/symfony/symfony-installer)
-if you haven't already. Then, install the Symfony Demo Application executing
-this command anywhere in your system:
+![third_screen](/web/images/3.png)
 
-```bash
-$ symfony demo
+- click Symfony Demo, you will get back to the first screen. But now that you are logged in, click Browse application
 
-# if you're using Windows:
-$ php symfony demo
-```
+![first_screen](/web/images/1.png)
 
-If the `demo` command is not available, update your Symfony Installer to the
-most recent version executing the `symfony self-update` command.
+- then you should see this
 
-> **NOTE**
->
-> If you can't use the Symfony Installer, download and install the demo
-> application using Git and Composer:
->
->     $ git clone https://github.com/symfony/symfony-demo symfony_demo
->     $ cd symfony_demo/
->     $ composer install --no-interaction
+![fourth_screen](/web/images/4.png)
 
-Usage
------
+## Workflow
 
-There is no need to configure a virtual host in your web server to access the application.
-Just use the built-in web server:
+I like to break down my work to tasks. I used GitHub Issues for this purpose, so if you browse over there, you can see how I divided the tasks. Every task is closed with a specific commit referenced in the commit message, so you can see how I implemented the changes if you wish so.
 
-```bash
-$ cd symfony_demo/
-$ php bin/console server:run
-```
+## Where is what
 
-This command will start a web server for the Symfony application. Now you can
-access the application in your browser at <http://localhost:8000>. You can
-stop the built-in web server by pressing `Ctrl + C` while you're in the
-terminal.
+Most of the code in this project is provided my the demo app. It helped me to put the project in context and understand some basic flows between php and twig.
 
-> **NOTE**
->
-> If you want to use a fully-featured web server (like Nginx or Apache) to run
-> Symfony Demo application, configure it to point at the `web/` directory of the project.
-> For more details, see:
-> http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
+I did not create a separate brand new bundle, I put the resources where the app was looking for it per default.
 
-Troubleshooting
----------------
+### Controller
 
-The current Symfony Demo application uses Symfony 3.x version. If you want to
-use the legacy Symfony 2.8 version, clone the Git repository and checkout the
-`v0.8.4` tag, which is the last one compatible with Symfony 2.8:
+/src/AppBundle/Controller/CrawlerController.php
 
-```bash
-$ git clone https://github.com/symfony/symfony-demo symfony_demo
-$ cd symfony_demo/
-$ git checkout tags/v0.8.4 -b v0.8.4
-$ composer install
-```
+Please note, I have created a fallback. If you have cloned the code and trying to take a look at it at a later time when there is no internet, I have put in an object faking the answer from the Spotify call. Line 67.
+
+As the exercise was only about scraping, I decided not to implement saving to the database.
+
+### View
+
+/app/Resources/views/jobs
+
+jobs.html.twig
+
+Responsible for the overall looks, including the modifications to the navbar, language picking and sidenav.
+
+_table.html.twig
+
+Responsible for the table containing the scraped data.
+
+
+### CSS
+
+/web/css/extra.css
+
+Sections in the file are separated based on where the selectors are used. In the sections the selectors are in alphabetical order.
+
+### JS
+
+/web/js/extra.js
+
+One single function here, not much to see. For real.
+
+# Thank you
+
+Thanks for your time taking a look at my work. Looking forward to hear from you!
+
+Bests,
+
+Timi

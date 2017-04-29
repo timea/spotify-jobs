@@ -21,17 +21,10 @@ use Symfony\Component\CssSelector\CssSelectorConverter;
 class CrawlerController extends Controller
 {
     /**
-     * @Route("/", defaults={"page": "1", "_format"="html"}, name="blog_index")
-     * @Route("/rss.xml", defaults={"page": "1", "_format"="xml"}, name="blog_rss")
-     * @Route("/page/{page}", defaults={"_format"="html"}, requirements={"page": "[1-9]\d*"}, name="blog_index_paginated")
+     * @Route("/", name="blog_index")
      * @Method("GET")
-     * @Cache(smaxage="10")
-     *
-     * NOTE: For standard formats, Symfony will also automatically choose the best
-     * Content-Type header for the response.
-     * See http://symfony.com/doc/current/quick_tour/the_controller.html#using-formats
      */
-    public function indexAction($page, $_format, Request $request)
+    public function indexAction(Request $request)
     {
         $jobs = $this->getJobs('https://www.spotify.com/es/jobs/opportunities/all/all/singapore-singapore');
         $locale = $request->getLocale();
@@ -39,12 +32,12 @@ class CrawlerController extends Controller
         $alert = count($jobs);
 
         return $this->render(
-          'jobs/jobs.'.$_format.'.twig',
+            'jobs/jobs.html.twig',
           [
             'jobs' => $jobs,
-            'locale'=>$locale,
-            'username'=>$username,
-            'alert'=>$alert
+            'locale' => $locale,
+            'username' => $username,
+            'alert' => $alert
           ]);
     }
     /**
@@ -66,7 +59,7 @@ class CrawlerController extends Controller
         //making sure the file_get_contents returned content
         if($job_title && $job_description) {
           for ($i=0; $i < count($job_title); $i++) {
-            $tmp = array("title"=>$job_title[$i][0], "link"=>$job_title[$i][1], "description"=>$job_description[$i]);
+            $tmp = array('title'=>$job_title[$i][0], 'link'=>$job_title[$i][1], 'description'=>$job_description[$i]);
             array_push($merged, $tmp);
           }
         }
@@ -74,17 +67,16 @@ class CrawlerController extends Controller
         //if file_get_contents failed for some reason, like no internet, here is some dummy data to fill the table for the sake of this test, not for peoduction
         if(!$merged) {
           $tmp = array(
-            "title"=>'Revenue Operations Manager',
-            'link'=>"/es/jobs/view/on214fwe/",
-            'description' => "Spotify is looking for a Revenue Operations Manager support the APAC Order To Cash (OTC) operations, reporting to Global OTC team, located in New York. We believe that you are a positive, driven and accurate self-starter who enjoy working in a dynamic environment. In return, we will offer you a stimulating and challenging role in an exciting and fast-paced international organization where development opportunities are endless.This role will be located in our Singapore office.");
+            'title'=>'Revenue Operations Manager',
+            'link'=>'/es/jobs/view/on214fwe/',
+            'description' => 'Spotify is looking for a Revenue Operations Manager support the APAC Order To Cash (OTC) operations, reporting to Global OTC team, located in New York. We believe that you are a positive, driven and accurate self-starter who enjoy working in a dynamic environment. In return, we will offer you a stimulating and challenging role in an exciting and fast-paced international organization where development opportunities are endless.This role will be located in our Singapore office.');
           array_push($merged, $tmp);
             $tmp = array(
-              'title'=>"APAC Payroll and Expenses Accountant",
-              'link'=>"/es/jobs/view/oKfj4fw6/",
-              'description' => "Spotify is expanding in Asia Pacific region and looking to create a regional hub from the Singapore office to serve this unique and growing region and is looking for a Payroll & Expenses Accountant. This is an amazing opportunity for someone looking for growth and challenges, and be part of a global team in one of the fastest growing tech companies. The position is based in Singapore.");
+              'title' => 'APAC Payroll and Expenses Accountant',
+              'link' => '/es/jobs/view/oKfj4fw6/',
+              'description' => 'Spotify is expanding in Asia Pacific region and looking to create a regional hub from the Singapore office to serve this unique and growing region and is looking for a Payroll & Expenses Accountant. This is an amazing opportunity for someone looking for growth and challenges, and be part of a global team in one of the fastest growing tech companies. The position is based in Singapore.');
           array_push($merged, $tmp);
         }
-
         return $merged;
     }
 
