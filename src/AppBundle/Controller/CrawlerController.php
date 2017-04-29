@@ -35,7 +35,8 @@ class CrawlerController extends Controller
     {
         $jobs = $this->getJobsFromSpoty('https://www.spotify.com/es/jobs/opportunities/all/all/singapore-singapore');
         $locale = $request->getLocale();
-        return $this->render('jobs/jobs.'.$_format.'.twig', ['jobs' => $jobs, 'locale'=>$locale]);
+        $username = $this->getUser()->getUsername();
+        return $this->render('jobs/jobs.'.$_format.'.twig', ['jobs' => $jobs, 'locale'=>$locale, 'username'=>$username]);
     }
     /**
      * pulling jobs from a specific URL
@@ -54,7 +55,7 @@ class CrawlerController extends Controller
           $tmp = array("title"=>$job_data[$i][0], "link"=>$job_data[$i][1], "description"=>$job_data2[$i]);
           array_push($merged, $tmp);
         }
-        
+
         return $merged;
     }
 

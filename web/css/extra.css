@@ -59,21 +59,50 @@ a {
   font-size: 0.8em;
   background-color: #426686 !important;
   color: white !important;
-  margin-top: 10px;
+  margin-top: 15px;
   line-height: 0px !important;
   text-decoration: none;
 }
 
 .post_a_job:hover {
-  text-align: center;
-  width: 120px;
-  font-size: 0.8em;
   background-color: #64AEEB !important;
   color: white !important;
-  margin-top: 10px;
-  line-height: 0px !important;
 }
 
 #message {
   color: #EDEDED;
+
+}
+
+.user_menu {
+  font-size: 0.7em;
+}
+
+.img-circle {
+    border-radius: 50%;
+    max-width: 40px !important;
+    padding-left: 10px;
+}
+
+#dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 110px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+
+#dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 111px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: '';
 }

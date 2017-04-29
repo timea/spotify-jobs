@@ -27,26 +27,23 @@
                                 <span class="glyphicon glyphicon-envelope"></span>
                               </a>
                             </li>
-                            <li>
-                                <a href="{{ path('blog_index') }}">
-                                    <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
-                                </a>
+                            <li class="dropdown user_menu">
+                                <a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown"> Hi {{ username }}   <img class="img-circle" src="{{ asset('images/kitten.jpg') }}">
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu" id="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                  <li><a href="#">Account Settings</a></li>
+                                  <li><a href="#">FAQ</a></li>
+                                  <li><a href="{{ path('security_logout') }}">
+                                       {{ 'menu.logout'|trans }}
+                                  </a></li>
+                                </ul>
                             </li>
 
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li>
-                                    <a href="{{ path('admin_post_index') }}">
-                                        <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
-                                    </a>
-                                </li>
-                            {% endif %}
                         {% endblock %}
 
                         {% if app.user %}
                             <li>
-                                <a href="{{ path('security_logout') }}">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
-                                </a>
+
                             </li>
                         {% endif %}
 
