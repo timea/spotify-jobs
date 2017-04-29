@@ -6,7 +6,10 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{{ path('homepage') }}">
-                        Symfony Demo
+                        <img class="logo" src="{{ asset('images/logo-light.png') }}">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="role">Recruiter</div>
+                        {% endif %}
                     </a>
 
                     <button type="button" class="navbar-toggle"
@@ -22,6 +25,7 @@
                     <ul class="nav navbar-nav navbar-right">
 
                         {% block header_navigation_links %}
+
                             <li>
                               <a id="message" href="#">
                                 <span class="glyphicon glyphicon-envelope"></span>
@@ -40,12 +44,6 @@
                             </li>
 
                         {% endblock %}
-
-                        {% if app.user %}
-                            <li>
-
-                            </li>
-                        {% endif %}
 
                         <li>
                             <a class="post_a_job" href=#>Post a job</a>
