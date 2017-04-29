@@ -52,3 +52,24 @@ a {
 .flag {
   max-width: 15px !important;
 }
+
+.post_a_job, .post_a_job:visited {
+  text-align: center;
+  width: 120px;
+  font-size: 0.8em;
+  background-color: #426686 !important;
+  color: white !important;
+  margin-top: 10px;
+  line-height: 0px !important;
+  text-decoration: none;
+}
+
+.post_a_job:hover {
+  text-align: center;
+  width: 120px;
+  font-size: 0.8em;
+  background-color: #64AEEB !important;
+  color: white !important;
+  margin-top: 10px;
+  line-height: 0px !important;
+}
