@@ -1,88 +1,31 @@
-.table .thead-new {
-    color: grey;
-    font-family: 'Lato-thin';
-    font-style: italic;
-    font-weight: 100 !important;
-    border-bottom: 4px solid #EDEDED;
-}
-
-.tr-new {
-  border-bottom: 2px solid #EDEDED;
-}
-
-.table .th-new {
-  padding: 20px 10px 20px 10px;
-}
-
-td {
-    padding: 20px 10px 20px !important;
-}
-
-.job-title {
-  color: #747474;
-}
-
-.wrapper {
-  overflow-x:auto;
-}
-
-.static-text {
-  color: #B2B2B2
-}
-
-.table {
-  background-color: white;
-}
-
-.cog-new, .sidebar-icon{
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #666;
-  color: transparent;
-}
+/*
+* === BODY ===
+*/
 
 .my-body {
   background-color: #EDEDED;
 }
 
-a {
-  color :	#64AEEB;
+.body-container {
+  padding-right: 30px;
+  padding-left: 140px;
 }
 
-
-.flag {
-  max-width: 15px !important;
+footer {
+  padding-left: 70px;
 }
 
-.post_a_job, .post_a_job:visited {
-  text-align: center;
-  width: 120px;
-  font-size: 0.8em;
-  background-color: #426686 !important;
-  color: white !important;
-  margin-top: 15px;
-  line-height: 0px !important;
-  text-decoration: none;
+.path {
+  padding-top: 5px;
+  padding-left: 140px;
+  background: #F5F5F5;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #c7c8c9;
 }
 
-.post_a_job:hover {
-  background-color: #64AEEB !important;
-  color: white !important;
-}
-
-#message {
-  color: #EDEDED;
-
-}
-
-.user_menu {
-  font-size: 0.7em;
-}
-
-.img-circle {
-    border-radius: 50%;
-    max-width: 40px !important;
-    padding-left: 10px;
-}
+/*
+* === NAV ===
+*/
 
 #dropdown-menu:before {
   position: absolute;
@@ -106,11 +49,45 @@ a {
   border-left: 6px solid transparent;
   content: '';
 }
+
+.flag {
+  max-width: 15px !important;
+}
+
+.img-circle {
+    border-radius: 50%;
+    max-width: 40px !important;
+    padding-left: 10px;
+}
+
+.message {
+  color: #EDEDED;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
 .navbar-brand {
     position: absolute;
-    left: 12%;
     padding-top: 25px;
     display: inline-flex;
+}
+
+.post_a_job, .post_a_job:visited {
+  text-align: center;
+  width: 120px;
+  font-size: 0.8em;
+  background-color: #426686 !important;
+  color: white !important;
+  margin-top: 15px;
+  line-height: 0px !important;
+  text-decoration: none;
+}
+
+.post_a_job:hover {
+  background-color: #64AEEB !important;
+  color: white !important;
 }
 
 .role {
@@ -121,6 +98,88 @@ a {
   padding-left: 5px;
   padding-top: 3px;
   color: #c4c2c2;
+}
+
+.top {
+  margin-left: 70px;
+}
+
+.user_menu {
+  font-size: 0.7em;
+}
+
+
+/*
+* === TABLE === (alphabetic order)
+*/
+
+a {
+  color :	#64AEEB;
+}
+
+.job-header {
+  padding-bottom: 30px;
+}
+
+.job-title {
+  color: #747474;
+}
+
+.static-text {
+  color: #B2B2B2
+}
+
+.table {
+  background-color: white;
+}
+
+td {
+    padding: 20px 10px 20px !important;
+}
+
+.thead-new {
+    color: grey;
+    font-family: 'Lato-thin';
+    font-style: italic;
+    font-weight: 100 !important;
+    border-bottom: 4px solid #EDEDED;
+}
+
+.thead-new th {
+  padding: 20px;
+}
+
+.tr-new {
+  border-bottom: 2px solid #EDEDED;
+}
+
+/*
+* === TABLE & SIDENAV ===
+*/
+
+.cog-new, .sidenav-icon{
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #666;
+  color: transparent;
+}
+
+/*
+* === SIDENAV ===
+*/
+
+.home {
+  background-color: #38424A;
+}
+
+.job-container {
+  position:relative;
+}
+
+.job-badge {
+  position: absolute;
+  left: 30px;
+  background: red;
+  font-size: 0.5em;
 }
 
 .sidenav {
@@ -148,40 +207,16 @@ a {
     background-color: #59D57F;
 }
 
-.sidebar-text {
-  font-size: 0.6em;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-.sidebar-icon{
+.sidenav-icon{
   font-size: 1.5em;
   text-align: center;
   display: inline-block;
   width: 100%;
 }
 
-#top {
-  margin-left: 70px;
-}
-
-.body-container {
-  padding-right: 25px;
-}
-
-.home {
-  background-color: #38424A;
-}
-
-.job-badge {
-  position: absolute;
-  left: 38px;
-  top: 75px;
-  background: red;
-  font-size: 0.5em;
-}
-
-footer {
-  padding-left: 70px;
+.sidenav-text {
+  font-size: 0.6em;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }

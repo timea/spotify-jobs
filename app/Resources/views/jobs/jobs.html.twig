@@ -2,28 +2,30 @@
 
 {% block header %}
     <header>
-    <div id="mySidenav" class="sidenav">
-    <a href="#" class="home">
-      <i class="fa fa-home sidebar-icon " aria-hidden="true"></i>
-      <div class="sidebar-text">
-        Home
-      </div>
-    </a>
-      <a href="#">
-        <span class="badge job-badge"> {{ alert }}</span>
-        <i class="fa fa-file sidebar-icon" aria-hidden="true"></i>
-        <div class="sidebar-text">
-          Jobs
+        <div id="mySidenav" class="sidenav">
+          <a href="{{ path('homepage') }}" class="home">
+            <i class="fa fa-home sidenav-icon " aria-hidden="true"></i>
+            <div class="sidenav-text">
+              Home
+            </div>
+          </a>
+          <a href="#">
+            <div class="job-container">
+              <span class="badge job-badge"> {{ alert }}</span>
+              <i class="fa fa-file sidenav-icon" aria-hidden="true"></i>
+              <div class="sidenav-text">
+                Jobs
+              </div>
+            </div>
+          </a>
+          <a href="#">
+            <i class="fa fa-tag fa-flip-horizontal sidenav-icon" aria-hidden="true"></i>
+            <div class="sidenav-text">
+              Prices
+            </div>
+          </a>
         </div>
-      </a>
-      <a href="#">
-        <i class="fa fa-tag fa-flip-horizontal sidebar-icon" aria-hidden="true"></i>
-        <div class="sidebar-text">
-          Prices
-        </div>
-      </a>
-    </div>
-        <div class="navbar navbar-default navbar-static-top" role="navigation" id="top">
+        <div class="navbar navbar-default navbar-static-top top" role="navigation">
             <div class="container" >
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{{ path('homepage') }}">
@@ -48,7 +50,7 @@
                         {% block header_navigation_links %}
 
                             <li>
-                              <a id="message" href="#">
+                              <a class="message" href="#">
                                 <span class="glyphicon glyphicon-envelope"></span>
                               </a>
                             </li>
@@ -86,16 +88,20 @@
                 </div>
             </div>
         </div>
+        <div class="row path">
+          <div class="column col-md-12 col-sm-12">
+          Jobs
+          </div>
+        </div>
     </header>
 {% endblock %}
 
 {% block title %}Jobs{% endblock %}
 
 {% block body %}
-  <div class="row">
-    <div class="column col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 ">
-      <h3> Jobs </h3>
+
+  <div class="table-area">
+      <h3 class="job-header"> Jobs </h3>
       {{ include('jobs/_table.html.twig') }}
-    </div>
   </div>
 {% endblock %}

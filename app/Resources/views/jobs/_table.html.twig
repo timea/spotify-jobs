@@ -4,15 +4,15 @@
     {% endstylesheets %}
 {% endblock %}
 
-<div class="table-responsive wrapper ">
+<div class="table-responsive">
   <table class="table">
   <thead class="thead-new">
     <tr>
-      <th class="th-new">Title</th>
-      <th class="th-new">Url</th>
-      <th class="th-new">Description</th>
-      <th class="th-new">Column4</th>
-      <th class="th-new"></th>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Column4</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +22,7 @@
       <td><a href="https://graduateland.com/jobs"{{ job.link }}>https://graduateland.com{{ job.link }}</a></td>
       <td class="static-text"> {{ job.description }}</td>
       <td class="static-text">Static text</td>
-      <td><i class="fa fa-cog cog-new" aria-hidden="true"></i></td>
+      <td><a href="#"><i class="fa fa-cog cog-new" aria-hidden="true"></i></a></td>
     </tr>
     {% endfor %}
   </tbody>
