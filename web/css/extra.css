@@ -73,3 +73,7 @@ a {
   margin-top: 10px;
   line-height: 0px !important;
 }
+
+#message {
+  color: #EDEDED;
+}
